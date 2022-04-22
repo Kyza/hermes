@@ -1432,9 +1432,6 @@ jsi::Value HermesRuntimeImpl::evaluateJavaScript(
     );
   }
 
-  auto returnValue =
-      evaluatePreparedJavaScript(prepareJavaScript(buffer, sourceURL));
-
   if (isMainBundle) {
     ::hermes::hermesLog("AliuHermes", "Injecting bootstrap");
     evaluateJavaScript(
@@ -1448,6 +1445,9 @@ jsi::Value HermesRuntimeImpl::evaluateJavaScript(
         "bootstrap"
     );
   }
+
+  auto returnValue =
+      evaluatePreparedJavaScript(prepareJavaScript(buffer, sourceURL));
 
   return returnValue;
 }
